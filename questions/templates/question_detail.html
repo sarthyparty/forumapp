@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2>{{ question.question }}</h2>
+
+{% for answer in answers %}
+    <h3>{{ answer.answer }}</h3>
+    <h5>            ~ {{ answer.first_name }} {{ answer.last_name }}</h5>
+    <br>
+{% endfor %}
+<br>
+<br>
+
+ <a href="{% url 'new_answer' question.id %}">Have an answer? Click here!}</a>
+
+{% endblock %}

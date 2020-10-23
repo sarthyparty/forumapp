@@ -7,5 +7,6 @@ urlpatterns = [
     path('questions/', views.questions, name='questions'),
     path('ask_question/', views.ask_question, name='ask_question'),
     path('q/<id>/', views.question_detail, name='question_detail'),
-    path('new_answer/<id>/', views.new_answer, name='new_answer')
+    path('new_answer/<id>/', views.new_answer, name='new_answer'),
+    path('search/<keyword>/', views.search, name='search')
 ]

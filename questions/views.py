@@ -7,7 +7,14 @@ from .models import Question, Answer
 # Create your views here.
 
 def home(request):
-    return render(request, 'home.html')
+    if request.method == 'POST':
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/search/' + request.POST['keyword'] + '/')
+
+    else:
+        form = SearchForm()
+    return render(request, 'home.html', {'form': form})
 
 
 def questions(request):
@@ -30,7 +37,7 @@ def ask_question(request):
 
 def question_detail(request, id):
     question = get_object_or_404(Question, id=id)
-    answers = Answer.objects.all().filter(question=question)
+    answers = Answer.objects.filter(question=question)
     return render(request, 'question_detail.html', {'question': question, 'answers': answers})
 
 
@@ -49,3 +56,7 @@ def new_answer(request, id):
         form = AnswerForm()
 
     return render(request, 'new_answer.html', {'form': form, 'question': question})
+
+def search(request, keyword):
+    questions = Question.objects.filter(question__search=keyword)
+    return render(request, 'questions.html', {'questions': questions})

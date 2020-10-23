@@ -14,3 +14,7 @@ class AnswerForm(forms.Form):
         validators.RegexValidator(regex='^[a-zA-Z\s]*$', message="Only letters allowed!")])
     answer = forms.CharField(label='Answer', max_length=answer_max, required=False,
                              widget=forms.Textarea)
+
+
+class SearchForm(forms.Form):
+    keyword = forms.CharField(label='Search', max_length=20)

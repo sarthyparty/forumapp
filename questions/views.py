@@ -44,7 +44,7 @@ def new_answer(request, id):
                                 last_name=str.capitalize(request.POST['last_name']),
                                 question=question)
             new_answer.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/questions')
     else:
         form = AnswerForm()
 

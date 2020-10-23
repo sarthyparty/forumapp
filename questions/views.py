@@ -2,6 +2,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from .forms import *
 from .models import Question, Answer
+from django.db.models import Q
+
 
 
 # Create your views here.
@@ -58,5 +60,9 @@ def new_answer(request, id):
     return render(request, 'new_answer.html', {'form': form, 'question': question})
 
 def search(request, keyword):
-    questions = Question.objects.filter(question__search=keyword)
+    questions = list(Question.objects.filter(question__icontains=keyword))
+    answers = Answer.objects.filter(answer__icontains=keyword)
+    for answer in answers:
+        if answer.question not in questions:
+            questions.append(answer.question)
     return render(request, 'questions.html', {'questions': questions})

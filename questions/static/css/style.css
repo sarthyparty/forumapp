@@ -32,7 +32,7 @@ body {
 
 h1 {
   color: navy;
-  margin-left: 20px;
+  margin-left: 200px;
 }
 
 h2 {
@@ -48,4 +48,10 @@ h3 {
 a {
   color: #333333;
   text-align: -moz-center;
+}
+
+p {
+  color: #447e9b;
+  font-size: 17px;
+  margin: auto;
 }

@@ -4,7 +4,7 @@ from .constants import *
 
 
 class QuestionForm(forms.Form):
-    question = forms.CharField(label='Question', max_length=question_max, required=False)
+    question = forms.CharField(label='Question', max_length=question_max, required=False, widget=forms.Textarea)
 
 
 class AnswerForm(forms.Form):
@@ -12,4 +12,5 @@ class AnswerForm(forms.Form):
         validators.RegexValidator(regex='^[a-zA-Z\s]*$', message="Only letters allowed!")])
     last_name = forms.CharField(label='Last Name', max_length=20, validators=[
         validators.RegexValidator(regex='^[a-zA-Z\s]*$', message="Only letters allowed!")])
-    answer = forms.CharField(label='Answer', max_length=answer_max, required=False)
+    answer = forms.CharField(label='Answer', max_length=answer_max, required=False,
+                             widget=forms.Textarea)

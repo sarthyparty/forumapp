@@ -2,7 +2,7 @@
 
 {% block content %}
     <form action="{% url 'ask_question'%}" method="post">
-        <h1>Ask your question here!</h1>
+        <h1>Type your question here!</h1>
         {% csrf_token %}
         {{ form.as_p }}
         <input type="submit" value="Create">

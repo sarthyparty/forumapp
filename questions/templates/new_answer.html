@@ -2,6 +2,8 @@
 
 {% block content %}
 <h1>{{ question.question }}</h1>
+    <h2>Type Your Answer Here!</h2>
+    <p>Answer:</p>
     <form action="{% url 'new_answer' question.id%}" method="post">
         {% csrf_token %}
         {{ form.as_p }}

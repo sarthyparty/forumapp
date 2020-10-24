@@ -5,6 +5,6 @@
 
 {% for question in questions %}
     <a href="{% url 'question_detail' question.id %}">{{ question.question }}</a>
-    <br>
+    <br><br>
 {% endfor %}
 {% endblock %}

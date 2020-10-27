@@ -4,7 +4,7 @@
 <h2>Questions</h2>
 
 {% for question in questions %}
-    <a href="{% url 'question_detail' question.id %}">{{ question.question }}</a>
+    <a href="{% url 'question_detail' question.id %}">{{ question }}</a>
     <br><br>
 {% endfor %}
 {% endblock %}

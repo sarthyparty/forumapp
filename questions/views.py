@@ -5,7 +5,6 @@ from .models import Question, Answer
 from django.db.models import Q
 
 
-
 # Create your views here.
 
 def home(request):
@@ -28,7 +27,7 @@ def ask_question(request):
     if request.method == "POST":
         form = QuestionForm(request.POST)
         if form.is_valid():
-            new_question = Question(question=str.capitalize(request.POST['question']))
+            new_question = Question(question=request.POST['question'])
             new_question.save()
             return HttpResponseRedirect('/')
     else:
@@ -48,7 +47,7 @@ def new_answer(request, id):
     if request.method == "POST":
         form = AnswerForm(request.POST)
         if form.is_valid():
-            new_answer = Answer(answer=str.capitalize(request.POST['answer']),
+            new_answer = Answer(answer=request.POST['answer'],
                                 first_name=str.capitalize(request.POST['first_name']),
                                 last_name=str.capitalize(request.POST['last_name']),
                                 question=question)
@@ -58,6 +57,7 @@ def new_answer(request, id):
         form = AnswerForm()
 
     return render(request, 'new_answer.html', {'form': form, 'question': question})
+
 
 def search(request, keyword):
     questions = list(Question.objects.filter(question__icontains=keyword))

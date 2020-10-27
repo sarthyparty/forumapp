@@ -6,6 +6,9 @@ class Question(models.Model):
     id = models.AutoField(primary_key=True)
     question = models.CharField(max_length=question_max)
 
+    def __str__(self):
+        return str(self.question)
+
 
 class Answer(models.Model):
     id = models.AutoField(primary_key=True)
@@ -13,4 +16,7 @@ class Answer(models.Model):
     last_name = models.CharField(max_length=20)
     answer = models.CharField(max_length=answer_max)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.answer)
 
